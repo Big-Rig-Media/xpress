@@ -48,6 +48,13 @@ if (!class_exists('Roots\\Sage\\Container')) {
 }
 
 /**
+ * Sage required plugins
+ */
+if ( file_exists(dirname( __DIR__ ) . '/app/activation.php') ) {
+    require_once dirname( __DIR__ ) . '/app/activation.php';
+}
+
+/**
  * Sage required files
  *
  * The mapped array determines the code library included in your theme.
@@ -58,7 +65,7 @@ array_map(function ($file) use ($sage_error) {
     if (!locate_template($file, true, true)) {
         $sage_error(sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file), 'File not found');
     }
-}, ['helpers', 'setup', 'filters', 'admin']);
+}, ['helpers', 'setup', 'filters', 'admin', 'plugins']);
 
 /**
  * Here's what's happening with these hooks:
