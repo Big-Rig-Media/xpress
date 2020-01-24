@@ -1,10 +1,18 @@
-<header class="banner">
-  <div class="container">
-    <a class="brand" href="{{ home_url('/') }}">{{ get_bloginfo('name', 'display') }}</a>
-    <nav class="nav-primary">
-      @if (has_nav_menu('primary_navigation'))
-        {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav']) !!}
-      @endif
-    </nav>
-  </div>
+<header role="banner">
+  @if( class_exists('ACF') )
+    @switch( get_field('header_component', 'option') )
+      @case('header-a')
+        @include('partials.headers.header-a')
+      @break
+      @case('header-b')
+        Header B
+      @break
+      @case('header-c')
+        Header C
+      @break
+      @default
+        Nothing Yet
+      @break
+    @endswitch
+  @endif
 </header>

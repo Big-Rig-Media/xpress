@@ -22,3 +22,17 @@ add_action('customize_register', function (\WP_Customize_Manager $wp_customize) 
 add_action('customize_preview_init', function () {
     wp_enqueue_script('sage/customizer.js', asset_path('scripts/customizer.js'), ['customize-preview'], null, true);
 });
+
+/**
+ * Theme option pages
+ */
+if ( class_exists('ACF') && function_exists('acf_add_options_page') ) {
+    acf_add_options_page([
+      'page_title' => 'Theme Options',
+      'menu_title' => 'Theme Options',
+      'menu_slug'  => 'theme-options',
+      'capability' => 'edit_posts',
+      'icon_url'   => 'dashicons-admin-site-alt3',
+      'redirect'   => false
+    ]);
+}

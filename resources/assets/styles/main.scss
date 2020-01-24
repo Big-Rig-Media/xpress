@@ -32,6 +32,8 @@
 @tailwind components;
 
 /** Import theme styles */
+@import "common/fonts";
+@import "common/global";
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your
