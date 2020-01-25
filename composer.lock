@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f31f679ab253b90c13366000decce59b",
+    "content-hash": "997d2dc1cde06d5a20b22cd20cae385d",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -636,6 +636,55 @@
                 "time"
             ],
             "time": "2018-03-19T15:50:49+00:00"
+        },
+        {
+            "name": "orditeck/sage9-acf-wp-blocks",
+            "version": "0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orditeck/sage9-acf-wp-blocks.git",
+                "reference": "aa57c63691d7717a858c93e3fb6f14ddda29b31c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orditeck/sage9-acf-wp-blocks/zipball/aa57c63691d7717a858c93e3fb6f14ddda29b31c",
+                "reference": "aa57c63691d7717a858c93e3fb6f14ddda29b31c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "sage-acf-gutenberg-blocks.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael W. Delaney",
+                    "email": "michael@michaeldelaney.me"
+                },
+                {
+                    "name": "Nico Prat"
+                },
+                {
+                    "name": "Keven Lefebvre",
+                    "email": "keven@nevek.co"
+                }
+            ],
+            "description": "Create Gutenberg blocks from Sage blade templates and ACF fields.",
+            "homepage": "https://github.com/orditeck/sage9-acf-wp-blocks",
+            "keywords": [
+                "advanced custom fields",
+                "gutenberg",
+                "wordpress"
+            ],
+            "time": "2019-07-30T18:11:18+00:00"
         },
         {
             "name": "psr/container",
