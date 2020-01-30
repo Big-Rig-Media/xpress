@@ -2,9 +2,10 @@
   @apply pl-0 list-none;
 }
 
-#menu-primary-navigation.nav {
+#menu-primary-navigation.nav,
+#menu-footer-navigation.nav {
   a {
-    @apply uppercase;
+    @apply text-xl font-trade-gothic-lt-bold uppercase;
   }
 
   // 1024
@@ -14,5 +15,12 @@
     li + li {
       @apply pl-16;
     }
+  }
+}
+
+#menu-primary-navigation.nav {
+  // 1023 <=
+  @media (max-width: 1023px) {
+    @apply hidden;
   }
 }

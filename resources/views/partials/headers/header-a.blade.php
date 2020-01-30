@@ -1,7 +1,8 @@
 <div class="md:flex md:flex-row md:item-center md:justify-end">
   @if( $phone )
-    <a href="tel:{{ preg_replace('/[^0-9]/', '', $phone) }}">{{ $phone }}</a>
+    <a class="text-sm font-trade-gothic-lt-bold" href="tel:{{ preg_replace('/[^0-9]/', '', $phone) }}">{{ $phone }}</a>
   @endif
+  <a class="hidden md:inline-block ml-5 text-sm font-trade-gothic-lt-bold" href="#">List With Us</a>
 </div>
 <div class="md:flex md:flex-row md:items-center md:justify-between">
   <a href="{{ home_url('/') }}">

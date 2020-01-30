@@ -1,3 +1,6 @@
 body {
-  @apply font-roboto-regular;
+  @apply font-trade-gothic-lt text-gray-900 bg-white;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

@@ -35,9 +35,13 @@
 @import "common/fonts";
 @import "common/global";
 @import "common/type";
+@import "components/buttons";
+@import "components/nav";
+@import "components/hero";
+@import "components/testimonials";
+@import "components/cta";
 @import "wordpress/blocks";
 @import "wordpress/acf";
-@import "components/nav";
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your

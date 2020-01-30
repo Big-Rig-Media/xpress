@@ -5,8 +5,7 @@
 
   @if (!have_posts())
     <div class="alert alert-warning">
-      {{ __('Sorry, but the page you were trying to view does not exist.', 'sage') }}
+      {!! apply_filters('the_content', __('Sorry, but the page you were trying to view does not exist.')) !!}
     </div>
-    {!! get_search_form(false) !!}
   @endif
 @endsection

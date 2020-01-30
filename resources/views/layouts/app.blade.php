@@ -10,7 +10,6 @@
     @endif
     @php do_action('get_header') @endphp
     @include('partials.header')
-    @include('partials.hero')
     <main role="document">
       @if(App\display_layout())
         <section role="region">
@@ -22,7 +21,6 @@
         @yield('content')
       @endif
     </main>
-    @include('partials.testimonials')
     @php do_action('get_footer') @endphp
     @include('partials.footer')
     @php wp_footer() @endphp

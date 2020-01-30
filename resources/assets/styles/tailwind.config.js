@@ -16,7 +16,7 @@ module.exports = {
       white: '#fff',
 
       gray: {
-        100: '#f7fafc',
+        100: '#e7e9e6',
         200: '#edf2f7',
         300: '#e2e8f0',
         400: '#cbd5e0',
@@ -24,7 +24,7 @@ module.exports = {
         600: '#718096',
         700: '#4a5568',
         800: '#2d3748',
-        900: '#1a202c'
+        900: '#323232'
       },
       red: {
         100: '#fff5f5',
@@ -157,7 +157,8 @@ module.exports = {
       'not-allowed': 'not-allowed'
     },
     fill: {
-      current: 'currentColor'
+      current: 'currentColor',
+      white: '#ffffff'
     },
     flex: {
       '1': '1 1 0%',
@@ -195,17 +196,31 @@ module.exports = {
         'Arial',
         'Noto Sans',
         'sans-serif'
+      ],
+      'trade-gothic-lt-bold': [
+        'trade-gothic-lt-bold',
+        'Helvetica Neue',
+        'Arial',
+        'Noto Sans',
+        'sans-serif'
+      ],
+      'trade-gothic-lt': [
+        'trade-gothic-lt',
+        'Helvetica Neue',
+        'Arial',
+        'Noto Sans',
+        'sans-serif'
       ]
     },
     fontSize: {
-      xs: '0.75rem',
-      sm: '0.875rem',
+      xs: '1rem',
+      sm: '1.125rem',
       base: '1.25rem',
-      lg: '1.125rem',
-      xl: '1.25rem',
+      lg: '1.25rem',
+      xl: '1.375rem',
       '2xl': '1.75rem',
-      '3xl': '1.875rem',
-      '4xl': '2.25rem',
+      '3xl': '2rem',
+      '4xl': '3rem',
       '5xl': '2.5rem',
       'md:5xl': '3.375rem'
     },
@@ -225,7 +240,8 @@ module.exports = {
       ...theme('spacing'),
       full: '100%',
       screen: '100vh',
-      hero: '562px'
+      hero: '562px',
+      icon: '32px'
     }),
     inset: {
       '0': '0',
@@ -259,7 +275,8 @@ module.exports = {
     }),
     maxHeight: {
       full: '100%',
-      screen: '100vh'
+      screen: '100vh',
+      icon: '20px'
     },
     maxWidth: {
       xs: '20rem',
@@ -355,7 +372,8 @@ module.exports = {
       '10/12': '83.333333%',
       '11/12': '91.666667%',
       full: '100%',
-      screen: '100vw'
+      screen: '100vw',
+      icon: '32px'
     }),
     zIndex: {
       auto: 'auto',
@@ -391,7 +409,7 @@ module.exports = {
     flexDirection: ['responsive'],
     flexGrow: [],
     flexShrink: [],
-    flexWrap: [],
+    flexWrap: ['responsive'],
     float: [],
     fontFamily: [],
     fontSize: [],
@@ -405,7 +423,7 @@ module.exports = {
     lineHeight: [],
     listStylePosition: [],
     listStyleType: [],
-    margin: [],
+    margin: ['responsive'],
     maxHeight: [],
     maxWidth: [],
     minHeight: [],
@@ -431,7 +449,7 @@ module.exports = {
     verticalAlign: [],
     visibility: [],
     whitespace: [],
-    width: [],
+    width: ['responsive'],
     wordBreak: [],
     zIndex: []
   },
