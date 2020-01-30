@@ -17,7 +17,42 @@ add_action('wp_enqueue_scripts', function () {
     if (is_single() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
+
+    //wp_enqueue_style('sage/shame.css', get_stylesheet_directory_uri() . '/assets/shame/shame.css', false, null);
+    //wp_enqueue_script('sage/shame.js', get_stylesheet_directory_uri() . '/assets/shame/shame.js', ['jquery'], null, true);
 }, 100);
+
+/**
+ * Preload Stylesheet files
+ */
+add_action('style_loader_tag', function($html, $handle, $href, $media) {
+    $styles = [
+        'sage/main.css'
+    ];
+
+    if (in_array($handle, $styles)) {
+        return '<link rel="preload" href="'.$href.'" as="style">
+                <link rel="stylesheet" href="'.$href.'" media="'.$media.'">';
+    } else {
+        return $html;
+    }
+}, 10, 4);
+
+/**
+ * Defer JavaScript files
+ */
+add_action('script_loader_tag', function($tag, $handle, $src) {
+    $scripts = [
+        'sage/main.js',
+        'sage/shame.js',
+    ];
+
+    if (in_array($handle, $scripts)) {
+        return '<script src="'.$src.'" defer></script>';
+    }
+
+    return $tag;
+}, 10, 3);
 
 /**
  * Theme setup
@@ -69,6 +104,8 @@ add_action('after_setup_theme', function () {
      * Use main stylesheet for visual editor
      * @see resources/assets/styles/layouts/_tinymce.scss
      */
+    add_theme_support('editor-styles');
+
     add_editor_style(asset_path('styles/main.css'));
 }, 20);
 

@@ -1,18 +1,20 @@
-<footer role="contentinfo">
-  @if( class_exists('ACF') )
-    @switch( get_field('footer_component', 'option') )
-      @case('footer-a')
-        @include('partials.footers.footer-a')
-      @break
-      @case('footer-b')
-        Footer B
-      @break
-      @case('footer-c')
-        Footer C
-      @break
-      @default
-        Nothing Yet
-      @break
-    @endswitch
-  @endif
-</footer>
+@if( class_exists('ACF') )
+  <footer class="py-10" role="contentinfo">
+    <div class="w-full max-w-10xl mx-auto px-buffer">
+      @switch( get_field('footer_component', 'option') )
+        @case('footer-a')
+          @include('partials.footers.footer-a')
+        @break
+        @case('footer-b')
+          @include('partials.footers.footer-b')
+        @break
+        @case('footer-c')
+          @include('partials.footers.footer-c')
+        @break
+        @default
+          Nothing Yet
+        @break
+      @endswitch
+    </div>
+  </footer>
+@endif

@@ -30,4 +30,43 @@ class App extends Controller
         }
         return get_the_title();
     }
+
+    /**
+     * Site Branding
+     *
+     * @return  string  The site's branding
+     */
+    public function branding() {
+        if ( get_field('branding', 'option') ) {
+            return get_field('branding', 'option');
+        }
+
+        return;
+    }
+
+    /**
+     * Site Phone
+     *
+     * @return  string  The site's phone number
+     */
+    public function phone() {
+        if ( get_field('phone_number', 'option') ) {
+            return get_field('phone_number', 'option');
+        }
+
+        return;
+    }
+
+    /**
+     * Google Tag Manager
+     *
+     * @return  string  The sites Google Tag Manager
+     */
+    public function tag_manager() {
+        if ( get_field('tag_manager_id', 'option') ) {
+            return get_field('tag_manager_id', 'option');
+        }
+
+        return;
+    }
 }

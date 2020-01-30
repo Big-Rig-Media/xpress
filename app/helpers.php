@@ -127,6 +127,23 @@ function locate_template($templates)
 }
 
 /**
+ * Determin what layout to show
+ * @return bool
+ */
+function display_layout()
+{
+    static $display;
+
+    isset($display) || $display = !in_array(true, [
+        is_page_template([
+            'views/template-home.blade.php'
+        ])
+    ]);
+
+    return apply_filters('sage/display_layout', $display);
+}
+
+/**
  * Determine whether to show the sidebar
  * @return bool
  */

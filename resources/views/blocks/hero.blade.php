@@ -1,11 +1,11 @@
 {{--
   Title: Hero
-  Description: A hero block.
+  Description: Add a hero with either an image, video or carousel.
   Category: common
-  Icon: admin-comments
+  Icon: images-alt2
   Keywords: hero
   Mode: edit
   Align: full
 --}}
 
-{!! get_field('hero_content') !!}
+@include('partials.hero')

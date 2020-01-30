@@ -1,0 +1,18 @@
+.nav {
+  @apply pl-0 list-none;
+}
+
+#menu-primary-navigation.nav {
+  a {
+    @apply uppercase;
+  }
+
+  // 1024
+  @media (min-width: 1024px) {
+    @apply flex flex-row items-center justify-between;
+
+    li + li {
+      @apply pl-16;
+    }
+  }
+}
