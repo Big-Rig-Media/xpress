@@ -10,7 +10,7 @@
 
 @if( class_exists('ACF') )
   @if( have_rows('portals') )
-    <section class="py-8 md:py-16 bg-white">
+    <section id="{{ $block['keywords'][0] }}" class="py-8 md:py-16 bg-white">
       <div class="w-full max-w-10xl mx-auto px-buffer">
         <div class="md:flex md:flex-row md:flex-wrap -mx-buffer js-portals">
           @while( have_rows('portals') ) @php the_row() @endphp

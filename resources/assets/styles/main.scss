@@ -21,6 +21,7 @@
  * @see https://github.com/webpack-contrib/sass-loader#imports
  */
 // @import "~some-node-module";
+@import "~slick-carousel/slick/slick.scss";
 
 /**
  * This injects any component classes registered by Tailwind plugins.
@@ -40,6 +41,7 @@
 @import "components/hero";
 @import "components/testimonials";
 @import "components/cta";
+@import "components/slicks";
 @import "wordpress/blocks";
 @import "wordpress/acf";
 

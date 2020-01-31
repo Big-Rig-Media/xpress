@@ -241,7 +241,9 @@ module.exports = {
       full: '100%',
       screen: '100vh',
       hero: '562px',
-      icon: '32px'
+      icon: '32px',
+      dot: '14px',
+      hamburger: '4px'
     }),
     inset: {
       '0': '0',
@@ -276,7 +278,8 @@ module.exports = {
     maxHeight: {
       full: '100%',
       screen: '100vh',
-      icon: '20px'
+      icon: '20px',
+      phone: '32px'
     },
     maxWidth: {
       xs: '20rem',
@@ -290,7 +293,9 @@ module.exports = {
       '5xl': '64rem',
       '6xl': '72rem',
       '10xl': '90rem',
-      full: '100%'
+      full: '100%',
+      brand: '216px',
+      initial: 'initial'
     },
     minHeight: {
       '0': '0',
@@ -373,7 +378,9 @@ module.exports = {
       '11/12': '91.666667%',
       full: '100%',
       screen: '100vw',
-      icon: '32px'
+      icon: '32px',
+      dot: '14px',
+      hamburger: '32px'
     }),
     zIndex: {
       auto: 'auto',
@@ -425,7 +432,7 @@ module.exports = {
     listStyleType: [],
     margin: ['responsive'],
     maxHeight: [],
-    maxWidth: [],
+    maxWidth: ['responsive'],
     minHeight: [],
     minWidth: [],
     objectFit: [],

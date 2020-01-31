@@ -23,7 +23,7 @@
       @endforeach
     @endif
   </div>
-  <div>
+  <div class="mt-5 md:mt-0">
     <p class="text-xs">
       <span class="block md:inline-block">&copy; {{ date('Y') }} {{ App::siteName() }}</span>
       <span class="hidden md:inline-block">&#124;</span>
