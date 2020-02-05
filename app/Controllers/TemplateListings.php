@@ -25,7 +25,7 @@ class TemplateListings extends Controller
     {
         $query = new \WP_QUery([
             'post_type'      => 'listings',
-            'posts_per_page' => 3
+            'posts_per_page' => 9
         ]);
 
         if ( $query ) {
