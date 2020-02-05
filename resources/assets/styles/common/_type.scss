@@ -44,11 +44,15 @@ h6 {
 }
 
 p {
-  @apply mb-5 text-base;
+  @apply mb-10 text-base;
 
   &:last-child {
     @apply mb-0;
   }
+}
+
+li {
+  @apply text-base;
 }
 
 b,

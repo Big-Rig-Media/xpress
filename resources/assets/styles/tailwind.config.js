@@ -175,6 +175,12 @@ module.exports = {
       default: '1'
     },
     fontFamily: {
+      'fontawesome-regular': [
+        'Font Awesome\\ 5 Pro Regular'
+      ],
+      'fontawesome-solid': [
+        'Font Awesome\\ 5 Pro Solid'
+      ],
       sans: [
         '-apple-system',
         'BlinkMacSystemFont',
@@ -247,7 +253,12 @@ module.exports = {
     }),
     inset: {
       '0': '0',
-      auto: 'auto'
+      auto: 'auto',
+      buffer: '-15px',
+      '100': '100%',
+      sticky: '15px',
+      half: '50%',
+      'slick-arrow': '15px'
     },
     letterSpacing: {
       tighter: '-0.05em',
@@ -424,7 +435,7 @@ module.exports = {
     fontStyle: [],
     fontWeight: [],
     height: ['responsive'],
-    inset: [],
+    inset: ['responsive'],
     justifyContent: ['responsive'],
     letterSpacing: [],
     lineHeight: [],
@@ -444,7 +455,7 @@ module.exports = {
     padding: ['responsive'],
     placeholderColor: [],
     pointerEvents: [],
-    position: [],
+    position: ['responsive'],
     resize: [],
     stroke: [],
     tableLayout: [],

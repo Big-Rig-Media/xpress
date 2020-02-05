@@ -91,3 +91,21 @@ add_action('init', function() {
         }
     }
 });
+
+/**
+ * Custom login url
+ *
+ * @link https://codex.wordpress.org/Plugin_API/Filter_Reference/login_headerurl
+ */
+add_filter('login_headerurl', function() {
+    return get_home_url();
+});
+
+/**
+ * Customize admin logo url
+ */
+add_action('login_head', function() {
+    if (in_array($GLOBALS['pagenow'], ['wp-login.php','wp-register.php'])) {
+        wp_enqueue_style('sage/admin.css', get_stylesheet_directory_uri() . '/assets/styles/admin.css', false, null);
+    }
+});

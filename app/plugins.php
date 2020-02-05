@@ -18,14 +18,14 @@ add_action('tgmpa_register', function() {
             'required'  => true
         ],
         [
+            'name'      => 'Google Analytics Dashboard Plugin for WordPress by MonsterInsights',
+            'slug'      => 'google-analytics-for-wordpress',
+            'required'  => false
+        ],
+        [
             'name'      => 'Imsanity',
             'slug'      => 'imsanity',
             'required'  => true
-        ],
-        [
-            'name'      => 'Site Kit by Google',
-            'slug'      => 'google-site-kit',
-            'required'  => false
         ],
         [
             'name'      => 'Stream',

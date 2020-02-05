@@ -1,5 +1,6 @@
 // import external dependencies
 import 'jquery';
+import '@fancyapps/fancybox/dist/jquery.fancybox.min.js';
 import 'slick-carousel/slick/slick.min';
 
 // Import everything from autoload

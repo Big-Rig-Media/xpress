@@ -24,7 +24,7 @@
       'content' => $hero_cnt,
     ];
   @endphp
-  <section id="{{ $block['keywords'][0] }}" class="{{ $hero_wdt === 'full' ? 'w-full' : 'w-full max-w-10xl mx-auto' }} hero">
+  <section id="{{ $block['keywords'][0] }}" class="{{ $hero_wdt === 'full' ? 'w-full' : 'w-full max-w-10xl mx-auto' }} brm-hero" role="region" aria-label="Hero">
     @switch( get_field('hero_component') )
       @case('hero-a')
         @include('partials.heroes.hero-a', [$options])

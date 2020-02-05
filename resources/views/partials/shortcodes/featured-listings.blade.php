@@ -1,5 +1,5 @@
 @if( $posts )
-  <div class="md:flex md:flex-row md:flex-wrap -mx-buffer js-listings">
+  <div class="md:flex md:flex-row md:flex-wrap -mx-buffer brm-featured-listings js-listings">
     @foreach( $posts as $listing )
       @php
          // Define fields
@@ -7,7 +7,7 @@
          $state = get_the_terms($listing, 'state');
          $city  = get_the_terms($listing, 'city');
       @endphp
-      <div class="md:w-1/3 mb-10 md:mb-0 px-buffer">
+      <div class="md:w-1/3 mb-10 md:mb-0 px-buffer brm-featured-listing">
         @if( App::image($listing->ID, 'w457x288') )
           <a class="block mb-5" href="{{ get_permalink($listing->ID) }}">
             <img src="{{ App::image($listing->ID, 'w457x288') }}" alt="{{ $listing->post_title }}" />

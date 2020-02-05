@@ -21,6 +21,7 @@
  * @see https://github.com/webpack-contrib/sass-loader#imports
  */
 // @import "~some-node-module";
+@import "~@fancyapps/fancybox/dist/jquery.fancybox.css";
 @import "~slick-carousel/slick/slick.scss";
 
 /**
@@ -41,9 +42,12 @@
 @import "components/hero";
 @import "components/testimonials";
 @import "components/cta";
-@import "components/slicks";
+@import "components/slick";
+@import "components/jquery";
+@import "wordpress/default";
 @import "wordpress/blocks";
 @import "wordpress/acf";
+@import "wordpress/gravityforms";
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your

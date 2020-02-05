@@ -10,6 +10,8 @@ namespace App;
  * @since   1.0.0
  */
 add_action('init', function() {
+    add_rewrite_rule( '(.?.+?)/page/?([0-9]{1,})/?$', 'index.php?pagename=$matches[1]&paged=$matches[2]', 'top' );
+
     // Create custom post types
     register_post_type('listings', [
         'label'                 => 'Listings',
@@ -24,7 +26,8 @@ add_action('init', function() {
         'hierarchical'          => false,
         'menu_position'         => null,
         'menu_icon'             => 'data:image/svg+xml;base64,' . base64_encode('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="#a0a5aa" d="M570.24 215.42l-58.35-47.95V72a8 8 0 00-8-8h-32a8 8 0 00-7.89 7.71v56.41L323.87 13a56 56 0 00-71.74 0L5.76 215.42a16 16 0 00-2 22.54L14 250.26a16 16 0 0022.53 2L64 229.71V288h-.31v208a16.13 16.13 0 0016.1 16H496a16 16 0 0016-16V229.71l27.5 22.59a16 16 0 0022.53-2l10.26-12.3a16 16 0 00-2.05-22.58zM464 224h-.21v240H352V320a32 32 0 00-32-32h-64a32 32 0 00-32 32v144H111.69V194.48l.31-.25v-4L288 45.65l176 144.62z"/></svg>'),
-        'supports'              => ['editor', 'title']
+        'supports'              => ['editor', 'title'],
+        'show_in_rest'          => true
     ]);
 
     register_post_type('testimonials', [
@@ -45,20 +48,27 @@ add_action('init', function() {
 
     // Set taxonomies
     $taxonomies = [
-        'State' => [
-          'public'        => false,
-          'label'         => 'State',
-          'url'           => 'state',
-          'hierarchical'  => true,
-          'parent'        => 'listings'
-        ],
         'City' => [
             'public'        => false,
             'label'         => 'City',
             'url'           => 'city',
             'hierarchical'  => true,
             'parent'        => 'listings'
-         ],
+        ],
+        'Featured' => [
+            'public'        => false,
+            'label'         => 'Featured',
+            'url'           => 'featured',
+            'hierarchical'  => true,
+            'parent'        => 'listings'
+        ],
+        'State' => [
+            'public'        => false,
+            'label'         => 'State',
+            'url'           => 'state',
+            'hierarchical'  => true,
+            'parent'        => 'listings'
+        ],
     ];
 
     if ( !empty($taxonomies) ) {
@@ -83,6 +93,17 @@ add_action('init', function() {
                 ]
             );
         }
+
+        // Pre-populate featured taxonomy
+        $terms = ['yes', 'no'];
+
+        foreach ( $terms as $term ) {
+            $check_term = term_exists($term);
+
+            if ( !$check_term ) {
+                wp_insert_term(ucfirst($term), 'featured');
+            }
+        }
     }
 });
 
@@ -94,11 +115,12 @@ add_action('init', function() {
  */
 add_filter('manage_edit-listings_columns', function( $columns ) {
     $columns = [
-        'cb'    => '<input type="checkbox" />',
-        'title' => __('Title'),
-        'city'	=> __('City'),
-        'state'	=> __('State'),
-        'date'	=> __('Date')
+        'cb'        => '<input type="checkbox" />',
+        'title'     => __('Title'),
+        'city'	    => __('City'),
+        'featured'  => __('Featured'),
+        'state'	    => __('State'),
+        'date'	    => __('Date')
       ];
 
       return $columns;
@@ -116,6 +138,15 @@ add_action('manage_listings_posts_custom_column', function( $column_name, $id ) 
     switch ( $column_name ) {
         case 'city':
             $terms = get_the_terms($id, 'city');
+
+            if ( $terms ) {
+                foreach ( $terms as $term ) {
+                    $output[] = $term->name;
+                }
+            }
+        break;
+        case 'featured':
+            $terms = get_the_terms($id, 'featured');
 
             if ( $terms ) {
                 foreach ( $terms as $term ) {

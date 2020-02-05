@@ -1,3 +1,5 @@
+@php global $wp_query @endphp
+
 @extends('layouts.app')
 
 @section('content')
@@ -13,5 +15,7 @@
     @include('partials.content-'.get_post_type())
   @endwhile
 
-  {!! get_the_posts_navigation() !!}
+  @if( $wp_query->max_num_pages > 1 )
+    {!! App::pagination($wp_query) !!}
+  @endif
 @endsection

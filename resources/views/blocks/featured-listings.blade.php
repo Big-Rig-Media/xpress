@@ -9,7 +9,7 @@
 --}}
 
 @if( class_exists('ACF') )
-  <section id="{{ $block['keywords'][0] }}" class="py-8 md:py-16 bg-white">
+  <section id="{{ $block['keywords'][0] }}" class="py-8 md:py-16 bg-white" role="region" aria-label="Featured Listings">
     <div class="w-full max-w-10xl mx-auto px-buffer">
       @php
         // Define fields

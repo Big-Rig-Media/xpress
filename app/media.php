@@ -21,9 +21,12 @@ add_filter('upload_mimes', function( $mimes ) {
 
 $custom_sizes = [
     'w1920x562' => [1920, 562, true],
+    'w960x600'  => [960, 600, true],
     'w960x562'  => [960, 562, true],
+    'w720x594'  => [720, 594, true],
     'w460x460'  => [460, 460, true],
-    'w457x288'  => [457, 288, true]
+    'w457x288'  => [457, 288, true],
+    'w182x114'  => [182, 114, true]
 ];
 
 if ( !empty($custom_sizes) ) {

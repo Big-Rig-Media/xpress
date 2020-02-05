@@ -15,7 +15,7 @@
 
     text-indent: -9999px;
 
-    .testimonials & {
+    .brm-testimonials & {
       @apply bg-white border-white;
     }
   }
@@ -24,7 +24,7 @@
     button {
       @apply bg-white;
 
-      .testimonials & {
+      .brm-testimonials & {
         @apply bg-primary-1 border-white;
       }
     }

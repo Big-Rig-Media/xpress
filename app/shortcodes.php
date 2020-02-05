@@ -9,7 +9,7 @@ add_shortcode('testimonials', function( $atts ) {
 
     $query = new \WP_Query([
         'post_type'      => 'testimonials',
-        'posts_per_page' => !is_admin() ? $limit : 1
+        'posts_per_page' => !is_admin() ? (int) $limit : 1
     ]);
 
     if ( $query->have_posts() ) {
@@ -26,7 +26,15 @@ add_shortcode('featured-listings', function( $atts ) {
 
     $query = new \WP_Query([
         'post_type'      => 'listings',
-        'posts_per_page' => $limit
+        'posts_per_page' => (int) $limit,
+        'tax_query'      => [
+            [
+                'taxonomy' => 'featured',
+                'field'    => 'slug',
+                'terms'    => 'yes'
+            ]
+        ],
+        'no_found_rows' => true
     ]);
 
     if ( $query->have_posts() ) {
@@ -36,6 +44,14 @@ add_shortcode('featured-listings', function( $atts ) {
     return;
 });
 
-add_shortcode('portals', function( $atts ) {
+add_shortcode('row', function( $atts, $content = null ) {
+    return '<div class="flex -mx-buffer">'.do_shortcode($content).'</div>';
+});
 
+add_shortcode('column', function( $atts, $content = null ) {
+    extract(shortcode_atts([
+        'width' => '1/2',
+    ], $atts));
+
+    return '<div class="w-full md:w-'.$width.' px-buffer">'.do_shortcode($content).'</div>';
 });

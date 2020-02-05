@@ -1,5 +1,5 @@
 @if( class_exists('ACF') )
-  <footer class="py-10" role="contentinfo">
+  <footer class="py-10" role="contentinfo" aria-label="Footer">
     <div class="w-full max-w-10xl mx-auto px-buffer">
       @switch( get_field('footer_component', 'option') )
         @case('footer-a')

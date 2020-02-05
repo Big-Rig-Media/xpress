@@ -127,7 +127,7 @@ function locate_template($templates)
 }
 
 /**
- * Determin what layout to show
+ * Determine what layout to show
  * @return bool
  */
 function display_layout()
@@ -138,6 +138,21 @@ function display_layout()
         is_page_template([
             'views/template-home.blade.php'
         ])
+    ]);
+
+    return apply_filters('sage/display_layout', $display);
+}
+
+/**
+ * Determine whether to show static call to action
+ * @return bool
+ */
+function display_static_call_to_action()
+{
+    static $display;
+
+    isset($display) || $display = in_array(true, [
+        is_singular(['listings'])
     ]);
 
     return apply_filters('sage/display_layout', $display);

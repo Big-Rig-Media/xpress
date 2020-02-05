@@ -46,7 +46,8 @@ class App extends Controller
      *
      * @return  string  The site's branding
      */
-    public function branding() {
+    public function branding()
+    {
         if ( get_field('branding', 'option') ) {
             return get_field('branding', 'option');
         }
@@ -59,7 +60,8 @@ class App extends Controller
      *
      * @return  string  The site's phone number
      */
-    public function phone() {
+    public function phone()
+    {
         if ( get_field('phone_number', 'option') ) {
             return get_field('phone_number', 'option');
         }
@@ -72,7 +74,8 @@ class App extends Controller
      *
      * @return  string  The sites Google Tag Manager
      */
-    public function tag_manager() {
+    public function tag_manager()
+    {
         if ( get_field('tag_manager_id', 'option') ) {
             return get_field('tag_manager_id', 'option');
         }
@@ -86,16 +89,23 @@ class App extends Controller
      * @param   int     $post
      * @param   string  $size
      */
-    public static function image( $id, $size ) {
+    public static function image( $id, $size )
+    {
         if ( $id && $size ) {
             $featured = wp_get_attachment_image_src( get_post_thumbnail_id($id), $size )[0];
 
             switch ($size) {
+                case 'w960x600':
+                    $placeholder = \App\asset_path('images/placeholders/960x600.png');
+                break;
                 case 'w460x460':
                     $placeholder = \App\asset_path('images/placeholders/460x460.png');
                 break;
                 case 'w457x288':
                     $placeholder = \App\asset_path('images/placeholders/457x288.png');
+                break;
+                case 'w182x114':
+                    $placeholder = \App\asset_path('images/placeholders/182x114.png');
                 break;
                 default:
                 break;
@@ -114,7 +124,8 @@ class App extends Controller
      *
      * @return  array   The sites's social media links
      */
-    public static function siteSocialLinks() {
+    public static function siteSocialLinks()
+    {
         $links = [];
 
         $platforms = [
@@ -192,5 +203,38 @@ class App extends Controller
         }
 
         return $links;
+    }
+
+    /**
+     * Numbered Pagination
+     *
+     * @param   object  $query
+     * @return  mixed   The HTML output
+     */
+    public static function pagination( $query )
+    {
+        $limit = 999999999;
+
+        $pagination = paginate_links([
+            'base'    => str_replace($limit, '%#%', esc_url(get_pagenum_link($limit))),
+            'format'  => '/page/%#%',
+            'current' => max(1, get_query_var('paged')),
+            'total'   => $query->max_num_pages,
+            'type'    => 'array'
+        ]);
+
+        if ( is_array($pagination) ) {
+            $output = '<nav>
+                            <ol id="menu-pagination-navigation" class="w-full md:w-auto nav">';
+
+            foreach ( $pagination as $page ) {
+                $output .= '<li class="menu-item">'.$page.'</li>';
+            }
+
+            return $output .= ' </ol>
+                            </nav>';
+        }
+
+        return;
     }
 }

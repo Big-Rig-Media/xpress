@@ -10,9 +10,9 @@
     @endif
     @php do_action('get_header') @endphp
     @include('partials.header')
-    <main role="document">
+    <main role="document" aria-label="Content">
       @if(App\display_layout())
-        <section role="region">
+        <section class="py-8 md:py-20" role="region" aria-label="Default Content">
           <div class="w-full max-w-10xl mx-auto px-buffer">
             @yield('content')
           </div>
@@ -21,6 +21,7 @@
         @yield('content')
       @endif
     </main>
+    @include('partials.static.call-to-action')
     @php do_action('get_footer') @endphp
     @include('partials.footer')
     @php wp_footer() @endphp

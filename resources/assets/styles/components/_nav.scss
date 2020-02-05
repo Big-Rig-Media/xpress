@@ -1,3 +1,29 @@
+.menu-item {
+  @apply relative;
+}
+
+.menu-item + .menu-item {
+  // 1023 <=
+  @media (max-width: 1023px) {
+    #menu-primary-navigation & {
+      @apply mt-3;
+    }
+  }
+}
+
+.sub-menu {
+  @apply hidden;
+
+  [data-state="open"] & {
+    @apply block mb-3 pl-buffer;
+  }
+
+  // 1024
+  .menu-item:hover & {
+    @apply block absolute top-100 left-buffer right-buffer p-buffer bg-white;
+  }
+}
+
 .nav-toggle {
   span {
     transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
@@ -73,5 +99,13 @@
     .nav-is-open & {
       @apply block mt-5;
     }
+  }
+}
+
+#menu-pagination-navigation.nav {
+  @apply flex flex-row items-center justify-start mt-10;
+
+  li + li {
+    @apply ml-5;
   }
 }
