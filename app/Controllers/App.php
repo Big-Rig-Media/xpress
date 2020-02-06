@@ -103,7 +103,7 @@ class App extends Controller
      * @param   string  $type
      * @return  string  The site's schema
      */
-    public function schema( $type )
+    public function schema( $type = 'default' )
     {
         if ( get_field('address1', 'option') && get_field('city', 'option') && get_field('state', 'option') && get_field('zipcode', 'option') ) {
             switch ( $type ) {
