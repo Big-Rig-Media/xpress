@@ -70,6 +70,74 @@ class App extends Controller
     }
 
     /**
+     * Site Email
+     *
+     * @return  string  The site's email
+     */
+    public function email()
+    {
+        if ( get_field('email', 'option') ) {
+            return get_field('email', 'option');
+        }
+
+        return;
+    }
+
+    /**
+     * Site Directions
+     *
+     * @return  string  The site's directions
+     */
+    public function directions()
+    {
+        if ( get_field('address1', 'option') && get_field('address2', 'option') && get_field('city', 'option') && get_field('state', 'option') && get_field('zipcode', 'option') ) {
+            return get_field('address1', 'option') . ' ' . get_field('address2', 'option') . ' ' . get_field('city', 'option') . ', ' . get_field('state', 'option') . ' ' . get_field('zipcode', 'option');
+        }
+
+        return;
+    }
+
+    /**
+     * Site Schema
+     *
+     * @param   string  $type
+     * @return  string  The site's schema
+     */
+    public function schema( $type )
+    {
+        if ( get_field('address1', 'option') && get_field('city', 'option') && get_field('state', 'option') && get_field('zipcode', 'option') ) {
+            switch ( $type ) {
+                case 'local':
+                    $schema_type = 'LocalBusiness';
+                break;
+                default:
+                    $schema_type = 'RVPark';
+                break;
+            }
+
+            $html = '<div itemscope itemtype="http://schema.org/'.$schema_type.'">
+                        <p class="mb-0" itemprop="name"><strong>'.self::siteName().'</strong></p>
+                        <address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                            <span itemprop="streetAddress">'.get_field('address1', 'option').'</span>
+                            <span itemprop="addressLocality">'.get_field('city', 'option').'</span>,
+                            <span itemprop="addressRegion">'.get_field('state', 'option').'</span>
+                            <span itemprop="postalCode">'.get_field('zipcode', 'option').'</span>
+                        </address>
+                        <p class="mt-3 mb-0">
+                            <a itemprop="telephone" href="tel:'.preg_replace('/[^0-9]/', '', self::phone()).'">'.self::phone().'</a>
+                        </p>
+                        <p>
+                            <a itemprop="email" href="mailto:'.self::email().'">'.self::email().'</a>
+                        </p>
+                    </div>';
+
+            return $html;
+        }
+
+        return;
+    }
+
+    /**
      * Google Tag Manager
      *
      * @return  string  The sites Google Tag Manager
